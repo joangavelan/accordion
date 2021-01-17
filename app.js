@@ -1,19 +1,17 @@
-const accordionItems = document.getElementsByClassName("accordion__item");
+const headings = document.getElementsByClassName('accordion__heading');
 
-function accordion() {
-    for (let item of accordionItems) {
-        let accHeader = item.firstElementChild;
-        accHeader.addEventListener("click", function() {
-            let accDetails = this.nextElementSibling;
-            if (accDetails.style.maxHeight) {
-                accDetails.style.maxHeight = null;
-                this.lastElementChild.innerHTML = "+";
-            } else {
-                accDetails.style.maxHeight = accDetails.scrollHeight + "px";
-                this.lastElementChild.innerHTML = "-";
-            }
-        })
-    }
+for(let heading of headings) {
+    heading.addEventListener('click', function() {
+        let details = this.nextElementSibling;
+        let icon = this.lastElementChild;
+        
+        if(details.style.maxHeight) {
+            icon.innerHTML = '+';
+            details.style.maxHeight = null;
+        }
+        else {
+            details.style.maxHeight = details.scrollHeight + 'px';
+            icon.innerHTML = '-';
+        }
+    })
 }
-
-accordion();
